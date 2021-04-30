@@ -1,0 +1,23 @@
+{
+  "name": "bsports",
+  "version": "1.0.0",
+  "description": "CS 35L Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxdalton01/bSports.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxdalton01/bSports/issues"
+  },
+  "homepage": "https://github.com/maxdalton01/bSports#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "Express": "^3.0.1"
+  }
+}
