@@ -18,6 +18,7 @@
   "homepage": "https://github.com/maxdalton01/bSports#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "Express": "^3.0.1"
+    "Express": "^3.0.1",
+    "mongodb": "^3.6.6"
   }
 }
