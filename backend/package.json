@@ -4,7 +4,7 @@
   "description": "CS 35L Project",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
