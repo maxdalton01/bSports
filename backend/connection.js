@@ -1,9 +1,13 @@
 // connection.js
 
+const config = require('./config');
+const username = config["username"];
+const password = config["password"];
+
 const {MongoClient} = require('mongodb');
 
 async function main() {
-    const uri = "mongodb+srv://maxdalton:bSports@cluster0.gw6pe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.gw6pe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     
     
     const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true });
