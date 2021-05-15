@@ -3,8 +3,8 @@ module.exports = mongoose => {
 	"event",
 	mongoose.Schema(
 	    {
-		sport: String,
-		location: String,
+			sport: String,
+			location: String,
 	        attendees: Number
 	    }
 	)

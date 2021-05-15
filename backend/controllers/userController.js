@@ -1,7 +1,7 @@
 const db = require("../models");
 const User = db.users;
 
-export.create = (req, res) => {
+exports.create = (req, res) => {
 
 };
 
