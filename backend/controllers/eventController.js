@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id; // /api/events/{request id}
 
-    Event.findByIdAndRemove(id)
+    Event.findByIdAndRemove(id, {useFindAndModify: false})
       .then(data => {
           if(!data) {
               res.status(404).send({ // standard error code for not found
