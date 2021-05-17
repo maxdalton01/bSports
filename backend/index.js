@@ -48,6 +48,7 @@ app.get("/api", (req, res) => {
     res.json({message: "Hello from server!" });
 });
 
+require("./routes/eventRoutes.js")(app);
 
 // set up the port to listen
 const PORT = process.env.PORT || 3001;
