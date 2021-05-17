@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     const event = new Event({
         sport: req.body.sport,
         location: req.body.location,
-        attendees: 0 // new event, no attendees yet
+        attendees: 1 // new event, only user who created is attending
     });
 
     // save in database
@@ -65,8 +65,10 @@ exports.addAttendee = (req, res) => {
     }
     const id = req.params.id;
 
-    Event.findByIdAndUpdate(id, req.body)
-      .then(data => {
+    // deprecation warning without the useFindAndModify set to false
+    // $inc is a mongodb functionality for incrementing int types in database
+    Event.findOneAndUpdate(id, {$inc : {'attendees' : 1}}, {useFindAndModify: false})
+      .then((data) => {
           if(!data) {
               res.status(404).send({
                   message: "Event not found"
