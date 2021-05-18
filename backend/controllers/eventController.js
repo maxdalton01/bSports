@@ -67,7 +67,7 @@ exports.addAttendee = (req, res) => {
 
     // deprecation warning without the useFindAndModify set to false
     // $inc is a mongodb functionality for incrementing int types in database
-    Event.findOneAndUpdate(id, {$inc : {'attendees' : 1}}, {useFindAndModify: false})
+    Event.findByIdAndUpdate(id, {$inc : {'attendees' : 1} }, { useFindAndModify: false })
       .then((data) => {
           if(!data) {
               res.status(404).send({
