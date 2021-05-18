@@ -2,6 +2,20 @@ const db = require("../models");
 const Event = db.events;
 
 exports.create = (req, res) => {
+    // validate POSTed event data
+    if ( req.body.sport === null || req.body.sport.length == 0 ) {
+        res.status(500).send({
+            message: "Missing or empty sport"
+        });
+        return; // bail
+    }
+    if ( req.body.location === null || req.body.location.length == 0 ) {
+        res.status(500).send({
+            message: "Missing or empty location"
+        });
+        return; // bail
+    }
+
     // create new event
     const event = new Event({
         sport: req.body.sport,
