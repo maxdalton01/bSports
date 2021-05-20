@@ -1,26 +1,23 @@
 // client/src/App.js
 
 import React from "react";
-import logo from './logo.svg';
-import './App.css';
+import ToolBar from './Components/toolBar';
+import homePage from "./Components/homePage";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
-    const [data, setData] = React.useState(null);
-
-    React.useEffect(() => {
-	fetch("/api")
-	    .then((res) => res.json())
-	    .then((data) => setData(data.message));
-    }, []);
-
-    return (
-	<div className="App">
-	    <header className="App-header">
-		<img src={logo} className="App-logo" alt="logo" />
-		<p>{!data ? "Loading..." : data}</p>
-	    </header>
-	</div>
-    );
+	return(
+		<BrowserRouter>
+			<ToolBar/>
+			<Switch>
+			    <Route path = "/FAQ" exact />
+				<Route path = "/" exact component={homePage} />
+				<Route path = "/logout" exact/>
+				<Route path = "/Profile" exact/>
+				<Route path = "/Post" exact />
+			</Switch>
+		</BrowserRouter>
+	)
 }
 
 export default App;
