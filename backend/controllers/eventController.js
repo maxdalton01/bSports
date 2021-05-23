@@ -24,8 +24,7 @@ exports.create = (req, res) => {
     });
 
     // save in database
-    event
-      .save(event)
+    event.save(event)
       .then(data => {
           res.send(data);
       })
@@ -96,6 +95,30 @@ exports.addAttendee = (req, res) => {
       .catch(err => {
           res.status(500).send({
               message: "Error updating database"
+          });
+      });
+};
+
+/*
+Pass in JSON object of the form as follows: 
+{
+    "filter": 
+    {
+        "sport": "someSport"
+        "event": "someEvent"
+    }
+}
+Also, note that an event AND a sport is not necessary, you can simply
+call with one or the other.
+*/
+exports.filter = (req, res) => {
+    Event.find(req.body.filter) 
+      .then(data => {
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: err.message || "Error reading from database"
           });
       });
 };
