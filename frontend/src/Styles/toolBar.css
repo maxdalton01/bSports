@@ -15,7 +15,7 @@
 }*/}
 .dropDown
 {
-    background-color: black;
+    background-color: #2D68C4;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -34,7 +34,7 @@
     position: absolute;
     background-color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 16px 0px ;
     z-index: 1;
 }
 .toolBarButtons
@@ -57,7 +57,7 @@
 
 .toolBar:hover .dropDown
 {
-    background-color: slateblue;
+    background-color: black;
 }
 .outsideButtons {
     float: left;
@@ -69,11 +69,11 @@
 }
 .outsideButtonsContainer {
     overflow: hidden;
-    background-color: black;
+    background-color:black;
 }
 
 .outsideButtons:hover, .toolBar:hover .dropDown {
-    background-color: slateblue;
+    background-color: #F2A900;
 }
 .toolBar:hover .toolBarButtons {
     display: block;
