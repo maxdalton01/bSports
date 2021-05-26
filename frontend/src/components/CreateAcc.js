@@ -6,11 +6,17 @@ class CreateAcc extends Component {
 	super(props);
 	this.state = {username: '', password: ''};
 	this.handleSubmit = this.handleSubmit.bind(this);
-	this.handleChange = this.handleChange.bind(this);
-    }
+	this.handleUsername = this.handleUsername.bind(this);
+	this.handlePassword = this.handlePassword.bind(this);
+    };
 	
-	handleChange(event) {
-		this.setState({value: event.target.value});
+	handleUsername(event) {
+
+	    this.setState({username: event.target.value});
+	}
+	
+	handlePassword(event) {
+		this.setState({password: event.target.value});
 	}
 	
 	handleSubmit(event) {
@@ -26,15 +32,15 @@ class CreateAcc extends Component {
 
                 <div className="username">
                     <label>Username</label>
-                    <input type="text" username={this.state.value} onChange={this.handleChange} className="userEntry" placeholder="Username" />
+                    <input type="text" username={this.state.username} onChange={this.handleUsername} className="userEntry" placeholder="Username" />
                 </div>
 
                 <div className="password">
                     <label>Password</label>
-                    <input type="password" password={this.state.value} onChange={this.handleChange} className="passEntry" placeholder="Enter password" />
+                    <input type="password" password={this.state.password} onChange={this.handlePassword} className="passEntry" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" className="button">Sign Up</button>
+                <button type="submit" value="Submit" className="button">Sign Up</button>
             </form>
         );
     }
