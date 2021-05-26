@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios';
 // import "./postEvent.css";
 
 class PostEvent extends Component {
@@ -23,9 +24,20 @@ class PostEvent extends Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
+
         alert("Sport submitted: " + this.state.sport);
         alert("Location submitted: " + this.state.location);
-        event.preventDefault();
+
+        const post = {
+            sport: this.state.sport,
+            location: this.state.location
+        };
+
+        axios.post(`http://localhost:3001/api/events/`, post)
+          .then(res => {
+              console.log(res);
+          })
     }
 
     render() {
