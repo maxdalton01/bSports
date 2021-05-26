@@ -14,5 +14,8 @@ module.exports = app => {
     // remove event with id
     router.delete("/:id", events.delete)
 
+    // filter events: takes in a JSON object
+    router.get("/filter", events.filter);
+
     app.use('/api/events', router);
 };
