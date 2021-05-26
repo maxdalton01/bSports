@@ -3,3 +3,4 @@ frontend/node_modules/*
 backend/config.js
 backend/request.rest
 *~
+.DS_Store
