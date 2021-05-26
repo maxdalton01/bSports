@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function ToolBar ()
 {
     return (
-        <div className={'outsideButtonsContainer'} style={{background: 'black'}}>
+        <div className={'outsideButtonsContainer'} style={{background: '#2D68C4'}}>
             <Link to='/post'>
                 <a className={'outsideButtons'} href="">POST✓</a>
             </Link>
