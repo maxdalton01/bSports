@@ -1,12 +1,12 @@
 // client/src/App.js
 
 import React from "react";
-import ToolBar from './Components/toolBar';
-import homePage from "./Components/homePage";
+import ToolBar from './components/toolBar';
+import homePage from "./components/homePage";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import CreateAcc from "./Components/CreateAcc";
-import FAQ from "./Components/FAQ";
+import CreateAcc from "./components/CreateAcc";
+import FAQ from "./components/FAQ";
 function App() {
 	return(
 		<BrowserRouter>
