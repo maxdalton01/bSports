@@ -2,4 +2,8 @@ backend/node_modules/*
 frontend/node_modules/*
 backend/config.js
 backend/request.rest
+<<<<<<< HEAD
 .idea
+=======
+*~
+>>>>>>> 6332f3e0f56cdbc3d44002e954e9efc324c3ba99
