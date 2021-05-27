@@ -18,7 +18,7 @@ function ToolBar ()
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
-                <Link to='/Profile'>
+                <Link to='/login'>
                     <a  className={'toolBarButtons'} href="">My Profile</a>
                 </Link>
                 <Link to='/logout'>

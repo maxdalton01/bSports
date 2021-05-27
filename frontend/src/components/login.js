@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-//import axios from 'axios'
-import "./CreateAcc.css"
+//import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-class CreateAcc extends Component {
+
+class login extends Component {
     constructor(props){
 	super(props);
 	this.state = {username: '', password: ''};
@@ -24,12 +25,13 @@ class CreateAcc extends Component {
 		alert('A name was submitted: ' + this.state.username);
 		alert('A password was submitted: ' + this.state.password);
 		event.preventDefault();
+
 	}
 
 	render() {
         return (
             <form className="group" onSubmit={this.handleSubmit}>
-                <h3 className="signUp">Sign Up</h3>
+                <h3 className="signUp">Welcome Back</h3>
 
                 <div className="username">
                     <label>Username</label>
@@ -41,10 +43,16 @@ class CreateAcc extends Component {
                     <input type="password" password={this.state.password} onChange={this.handlePassword} className="passEntry" placeholder="Enter password" />
                 </div>
 
-                <button type="submit" value="Submit" className="button">Sign Up</button>
+                <button type="submit" value="Submit" className="button">Log in</button>
+                <p className="alreadyReg">
+                    New to bSports? &ensp;   
+                    <Link to='/Profile'>
+                        <a>Create an Account</a>
+                    </Link>
+                </p>
             </form>
         );
     }
 }
 
-export default CreateAcc;
+export default login;
