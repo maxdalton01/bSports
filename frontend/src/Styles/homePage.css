@@ -2,13 +2,34 @@
 {
     background-color: gray;
     color: black;
-    padding: 6px 19px;
+    padding: 12px 23px;
     font-size: 15px;
     border: none;
     position: center;
+    border-radius: 25px;
 }
 .filterBorder
 {
-    padding: 7px 12px;
+    padding: 7px 12px ;
+
+}
+.posts
+{
+    padding: 50px 16px;
+    background-color: #F2A900;
+    position: center;
+    border-radius: 25px;
+    text-align: center;
+    border-style: solid;
+    border-color: #2D68C4;
+    border-width: thick;
+}
+
+.rsvpButton
+{
+    background-color: #2D68C4;
+    border-radius: 25px;
+    padding: 16px 16px;
+    float: right;
 
 }
