@@ -1,0 +1,99 @@
+/* for homepage header */
+
+{/*.toolBarButtons
+{
+    border: 10px black;
+    margin: 3px;
+    background-color: black;
+    color: white;
+}
+
+
+.toolBar
+{
+    background-color: black;
+}*/}
+.dropDown
+{
+    background-color: #2D68C4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+
+}
+.toolBar
+{
+    float: right;
+    overflow: hidden;
+  
+}
+.container
+{
+    display: none;   /*makes the contents of the toolbar not visible unless hovered over*/
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 0px 16px 0px ;
+    z-index: 1;
+}
+.toolBarButtons
+{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.container .toolBarButtons:hover
+{
+    background-color: lightgrey;
+}
+
+.toolBar:hover .container
+{
+    display: block;
+}
+
+.toolBar:hover .dropDown
+{
+    background-color: black;
+}
+.outsideButtons {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+.outsideButtonsContainer {
+    overflow: hidden;
+    background-color:black;
+}
+
+.outsideButtons:hover, .toolBar:hover .dropDown {
+    background-color: #F2A900;
+}
+.toolBar:hover .toolBarButtons {
+    display: block;
+}
+.background
+{
+    background-color: #ffdf93;
+}
+
+.logo {
+    align-items: center;
+    float: center;
+}
+
+.logoImage {
+    float: center;
+    width: 100px;
+    height: auto;
+    margin-top: -18%;
+    margin-bottom: -20%;
+    margin-left: 50%;
+    margin-right: 50%;
+}
