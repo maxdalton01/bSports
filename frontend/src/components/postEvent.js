@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-// import "./postEvent.css";
+import "./postEvent.css";
 
 class PostEvent extends Component {
     constructor(props) {
@@ -38,36 +38,44 @@ class PostEvent extends Component {
           .then(res => {
               console.log(res);
           })
+
+        // TODO: redirect to home page
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label >
-                    Sport:
-                    <select location={this.state.sport} onChange={this.handleSportChange}>
-                        <option value="soccer">Soccer</option>
-                        <option value="basketball">Basketball</option>
-                        <option value="baseball">Baseball</option>
-                        <option value="football">Football</option>
-                        <option value="volleyball">Volleyball</option>
-                        <option value="tennis">Tennis</option>
-                    </select>
-                </label>
-                
-                <label>
-                    Location:
-                    <select location={this.state.location} onChange={this.handleLocationChange}>
-                        <option value="hitch">Hitch Courts</option>
-                        <option value="imfields">IM Fields</option>
-                        <option value="drake">Drake Stadium</option>
-                        <option value="sunsertrec">Sunset Rec</option>
-                        <option value="wooden">John Wooden Center</option>
-                    </select>
-                    <input type="submit" value="Submit" />
-                </label>
-                
-            </form>
+            <body>
+                <form onSubmit={this.handleSubmit}>
+                    <h3>Post a Pickup Game</h3> 
+                    <label >
+                        Sport:
+                        <select location={this.state.sport} onChange={this.handleSportChange} className="dropDowns">
+                            <option  selected disabled>Pick a sport</option>
+                            <option value="soccer">Soccer</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="baseball">Baseball</option>
+                            <option value="football">Football</option>
+                            <option value="volleyball">Volleyball</option>
+                            <option value="tennis">Tennis</option>
+                        </select>
+                    </label>
+                    <br />
+                    <label>
+                        Location:
+                        <select location={this.state.location} onChange={this.handleLocationChange} className="dropDowns">
+                            <option selected disabled>Pick a location</option>
+                            <option value="hitch">Hitch Courts</option>
+                            <option value="imfields">IM Fields</option>
+                            <option value="drake">Drake Stadium</option>
+                            <option value="sunsetrec">Sunset Rec</option>
+                            <option value="wooden">John Wooden Center</option>
+                        </select>
+                        <br />
+                        <input type="submit" value="Submit" className="submitter"/>
+                    </label>
+                    
+                </form>
+            </body>
         );
     }
 }
