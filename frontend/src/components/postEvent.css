@@ -1,0 +1,27 @@
+form {
+    font-family: 'Courier New', monospace;   
+    font-weight: bold; 
+    text-align: center;
+}
+
+body {
+    background-color: #ffdf93;
+}
+
+select {
+    margin: 10px;
+}
+
+h3 {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin: 50px;
+}
+
+.submitter {
+    font-size: 20px;
+    color: white;
+    background-color: #2D68C4;
+    border-color: #2D68C4;
+    margin: 50px;
+}
