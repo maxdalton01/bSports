@@ -78,3 +78,7 @@
 .toolBar:hover .toolBarButtons {
     display: block;
 }
+.background
+{
+    background-color: #ffdf93;
+}

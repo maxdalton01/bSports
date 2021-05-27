@@ -7,22 +7,22 @@ function ToolBar ()
     return (
         <div className={'outsideButtonsContainer'} style={{background: '#2D68C4'}}>
             <Link to='/post'>
-                <a className={'outsideButtons'} href="">POST✓</a>
+                <a className={'outsideButtons'} >POST✓</a>
             </Link>
             <Link to='/'>
-                <a className={'outsideButtons'} href=""> HOME </a>
+                <a className={'outsideButtons'} > HOME </a>
             </Link>
             <Link to='/FAQ'>
-                <a className={'outsideButtons'} href=""> FAQ/CONTACT </a>
+                <a className={'outsideButtons'} > FAQ/CONTACT </a>
             </Link>
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
                 <Link to='/Profile'>
-                    <a  className={'toolBarButtons'} href="">My Profile</a>
+                    <a  className={'toolBarButtons'} >My Profile</a>
                 </Link>
                 <Link to='/logout'>
-                    <a  className={'toolBarButtons'} href="">Log Out</a>
+                    <a  className={'toolBarButtons'} >Log Out</a>
                 </Link>
             </nav>
 
