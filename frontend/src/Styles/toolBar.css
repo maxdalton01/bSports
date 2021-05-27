@@ -82,3 +82,18 @@
 {
     background-color: #ffdf93;
 }
+
+.logo {
+    align-items: center;
+    float: center;
+}
+
+.logoImage {
+    float: center;
+    width: 100px;
+    height: auto;
+    margin-top: -18%;
+    margin-bottom: -20%;
+    margin-left: 50%;
+    margin-right: 50%;
+}

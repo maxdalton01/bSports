@@ -1,6 +1,7 @@
 import React from "react";
 import '../Styles/toolBar.css';
 import {Link} from 'react-router-dom';
+import logo from "./uclalogo.png";
 
 function ToolBar ()
 {
@@ -15,6 +16,9 @@ function ToolBar ()
             <Link to='/FAQ'>
                 <a className={'outsideButtons'} > FAQ/CONTACT </a>
             </Link>
+        <div className="logo">
+            <img src={logo} className="logoImage"/>
+        </div>
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
