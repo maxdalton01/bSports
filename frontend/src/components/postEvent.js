@@ -38,6 +38,8 @@ class PostEvent extends Component {
           .then(res => {
               console.log(res);
           })
+
+        // TODO: redirect to home page
     }
 
     render() {
