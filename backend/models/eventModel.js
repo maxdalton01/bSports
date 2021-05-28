@@ -5,7 +5,9 @@ module.exports = mongoose => {
 	    {
 			sport: String,
 			location: String,
-	        attendees: Number
+	        attendees: Number,
+			description: String,
+			date: Date
 	    }
 	)
     );
