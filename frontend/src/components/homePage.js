@@ -33,7 +33,7 @@ class HomePage extends React.Component
                            <h1 className={"date"}> {date.format(new Date(post.date), 'ddd hh:mm A, MMM DD YYYY')}</h1> <h1 style={{float: "top"}}> <ul className={"attendees"}> Attendees: {post.attendees} <ul>{'----------------'}<ul>
                             </ul><button className='rsvpButton'> RSVP</button>
                            </ul>
-                           </ul> </h1> <hr/> <h3 className={"description"}> Description: {post.description} </h3>
+                           </ul> </h1> <hr/> <h3 className={"description"}> {post.description} </h3>
                          </ul>)}
 
                     </div>
