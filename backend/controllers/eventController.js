@@ -1,6 +1,8 @@
 const db = require("../models");
 const Event = db.events;
 
+
+
 exports.create = (req, res) => {
     // validate POSTed event data
     if ( req.body.sport === null || req.body.sport.length == 0 ) {
@@ -20,7 +22,9 @@ exports.create = (req, res) => {
     const event = new Event({
         sport: req.body.sport,
         location: req.body.location,
-        attendees: 1 // new event, only user who created is attending
+        attendees: 1, // new event, only user who created is attending
+        description: req.body.description,
+        date: req.body.date
     });
 
     // save in database
@@ -72,7 +76,7 @@ exports.getAll = (req, res) => {
 
 exports.addAttendee = (req, res) => {
     if(!req.body) {
-        return res.status(400).send({ // stanadard code for bad request
+        return res.status(400).send({ // standard code for bad request
             message: "Bad request"
         });
     }
