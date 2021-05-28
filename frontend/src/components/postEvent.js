@@ -8,7 +8,7 @@ function PostEvent (props) {
     const [sport, setSport] = useState('soccer');
     const [location, setLocation] = useState('hitch');
     const [date, setDate] = useState(new Date());
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState('No description.');
 
     let history = useHistory(); // component used for redirecting
 
@@ -38,7 +38,7 @@ function PostEvent (props) {
                 <label >
                     Description:
                     <br />
-                    <textarea type="text" value={description} onChange={(evt) => setDescription(evt.target.value)} 
+                    <textarea type="text" onChange={(evt) => setDescription(evt.target.value)} 
                         className="textField" placeholder="Describe event here"
                     />
                 </label>
