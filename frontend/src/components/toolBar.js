@@ -1,28 +1,37 @@
 import React from "react";
 import '../Styles/toolBar.css';
 import {Link} from 'react-router-dom';
+import logo from "./uclalogo.png";
 
 function ToolBar ()
 {
     return (
         <div className={'outsideButtonsContainer'} style={{background: '#2D68C4'}}>
             <Link to='/post'>
-                <a className={'outsideButtons'} href="">POST✓</a>
+                <a className={'outsideButtons'} >POST✓</a>
             </Link>
             <Link to='/'>
-                <a className={'outsideButtons'} href=""> HOME </a>
+                <a className={'outsideButtons'} > HOME </a>
             </Link>
             <Link to='/FAQ'>
-                <a className={'outsideButtons'} href=""> FAQ/CONTACT </a>
+                <a className={'outsideButtons'} > FAQ/CONTACT </a>
             </Link>
+        <div className="logo">
+            <img src={logo} className="logoImage"/>
+        </div>
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
+<<<<<<< HEAD
                 <Link to='/login'>
                     <a  className={'toolBarButtons'} href="">My Profile</a>
+=======
+                <Link to='/Profile'>
+                    <a  className={'toolBarButtons'} >My Profile</a>
+>>>>>>> main
                 </Link>
                 <Link to='/logout'>
-                    <a  className={'toolBarButtons'} href="">Log Out</a>
+                    <a  className={'toolBarButtons'} >Log Out</a>
                 </Link>
             </nav>
 
