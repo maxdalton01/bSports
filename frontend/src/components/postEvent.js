@@ -2,11 +2,14 @@ import React, {useState} from "react";
 import axios from 'axios';
 import DateTimePicker from 'react-datetime-picker';
 import "./postEvent.css";
+import { useHistory } from 'react-router-dom';
 
 function PostEvent (props) {
     const [sport, setSport] = useState('soccer');
     const [location, setLocation] = useState('hitch');
     const [date, setDate] = useState(new Date());
+
+    let history = useHistory(); // component used for redirecting
 
     
     let handleSubmit = (event) => {
@@ -25,6 +28,7 @@ function PostEvent (props) {
         axios.post(`http://localhost:3001/api/events/`, post)
           .then(res => {
               console.log(res);
+              history.push('/'); // this is equivalent to saying "redirect to homepage"
           })
 
         // TODO: redirect to home page

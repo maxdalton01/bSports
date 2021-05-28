@@ -1,8 +1,6 @@
 const db = require("../models");
 const Event = db.events;
 
-
-
 exports.create = (req, res) => {
     // validate POSTed event data
     if ( req.body.sport === null || req.body.sport.length == 0 ) {
