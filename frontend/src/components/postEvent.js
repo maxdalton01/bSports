@@ -8,6 +8,7 @@ function PostEvent (props) {
     const [sport, setSport] = useState('soccer');
     const [location, setLocation] = useState('hitch');
     const [date, setDate] = useState(new Date());
+    const [description, setDescription] = useState('');
 
     let history = useHistory(); // component used for redirecting
 
@@ -15,14 +16,11 @@ function PostEvent (props) {
     let handleSubmit = (event) => {
         event.preventDefault();
 
-        alert("Sport submitted: " + sport);
-        alert("Location submitted: " + location);
-        alert("Date submitted: " + date);
-
         const post = {
             sport: sport,
             location: location,
-            date: date
+            date: date,
+            description: description
         };
 
         axios.post(`http://localhost:3001/api/events/`, post)
@@ -31,7 +29,6 @@ function PostEvent (props) {
               history.push('/'); // this is equivalent to saying "redirect to homepage"
           })
 
-        // TODO: redirect to home page
     }
 
     return (
@@ -39,8 +36,16 @@ function PostEvent (props) {
             <form onSubmit={handleSubmit}>
                 <h3>Post a Pickup Game</h3> 
                 <label >
+                    Description:
+                    <br />
+                    <textarea type="text" value={description} onChange={(evt) => setDescription(evt.target.value)} 
+                        className="textField" placeholder="Describe event here"
+                    />
+                </label>
+                <br />
+                <label >
                     Sport:
-                    <select location={sport} onChange={(evt) => setSport(evt.target.value)} className="dropDowns">
+                    <select sport={sport} onChange={(evt) => setSport(evt.target.value)} className="dropDowns">
                         <option  selected disabled>Pick a sport</option>
                         <option value="soccer">Soccer</option>
                         <option value="basketball">Basketball</option>
