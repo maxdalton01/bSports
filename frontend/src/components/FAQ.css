@@ -1,6 +1,8 @@
 .header {
-    color: #F2A900;
-    background-color: #FBF861;
+
+    color: #2D68C4;
+    background-color: #ffdf93;
+
     text-align: center;
     font-family: Courier New;
 }
@@ -10,7 +12,7 @@
     margin-left: 200px;
     text-align: left;
     font-size: 25px;
-    color: #F2A900;
+    color: #2D68C4;
     margin-right: 200px;
     margin-top: 25px;
     margin-bottom: 25px;
