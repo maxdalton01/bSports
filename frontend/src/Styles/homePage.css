@@ -15,7 +15,7 @@
 }
 .posts
 {
-    padding: 50px 16px;
+    padding: 20px 30px;
     background-color: #F2A900;
     position: center;
     border-radius: 25px;
@@ -29,7 +29,35 @@
 {
     background-color: #2D68C4;
     border-radius: 25px;
-    padding: 16px 16px;
+    padding: 10px 14px;
     float: right;
 
+}
+.postTitle
+{
+    float: left;
+    color: #2D68C4;
+
+
+}
+
+.attendees
+{
+    float: right;
+    font-size: large;
+    font-family: 'Courier New', monospace;
+
+}
+.description
+{
+    font-family: 'Courier New', monospace;
+    float: inside;
+    color: black;
+    font-size: 15px;
+
+}
+
+.date
+{
+    font-family: 'Courier New', monospace;
 }
