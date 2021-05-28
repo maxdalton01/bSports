@@ -4,5 +4,5 @@ backend/config.js
 backend/request.rest
 .idea
 *~
-.DS_Store
+*.DS_Store
 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../Styles/homePage.css';
 import axios from 'axios';
+import date from 'date-and-time';
 /*import {Link} from 'react-router-dom';*/
 
 
@@ -29,10 +30,10 @@ class HomePage extends React.Component
 
                         { this.state.allEvents.reverse().map(post=> <ul class ="posts"> <h1 class ="postTitle"> {post.sport} {" "} @
                        {post.location}  </h1>
-                           <h1 className={"date"}> 00/00/00 9:00</h1> <h1 style={{float: "top"}}> <ul className={"attendees"}> Attendees: {post.attendees} <ul>{'----------------'}<ul>
+                           <h1 className={"date"}> {date.format(new Date(post.date), 'ddd hh:mm A, MMM DD YYYY')}</h1> <h1 style={{float: "top"}}> <ul className={"attendees"}> Attendees: {post.attendees} <ul>{'----------------'}<ul>
                             </ul><button className='rsvpButton'> RSVP</button>
                            </ul>
-                           </ul> </h1> <hr/> <h3 className={"description"}> This is test of the description property testing1234567</h3>
+                           </ul> </h1> <hr/> <h3 className={"description"}> Description: {post.description} </h3>
                          </ul>)}
 
                     </div>
