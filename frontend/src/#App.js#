@@ -1,0 +1,23 @@
+// client/src/App.js
+
+import React from "react";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import CreateAcc from "./components/CreateAcc";
+import FAQ from "./components/FAQ";
+
+function App() {
+  return (
+	  <BrowserRouter>
+	  <ToolBar/>
+	  <Switch>
+	  <Route path = "/FAQ" exact component={homePage} />
+	  <Route path = "/" exact component={homePage} />
+	  <Route path = "/logout" exact/>
+	  <Route path = "/Profile" exact/>
+	  <Route path = "/Post" exact />
+	  </Switch>
+	  </BrowserRouter>
+  );
+}
+
+export default App;
