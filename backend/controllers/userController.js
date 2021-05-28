@@ -9,16 +9,16 @@ passport.deserializeUser(account.deserializeUser());
 
 const logout = (req,res) => {
     req.logout();
-    res.redirect('/');       //redirect to proper home page
+    ///front end does redirects now
 };
 const register = (req,res) => {
     account.register(new account({username: req.body.username}), req.body.password, (err,user) => {
-        if (err){
-            res.redirect("/")
+        if (err){                           /////if error sensed res.data is null
+            res.send(null)
         }
         else{
-            passport.authenticate("local") (req, res, function() {
-                res.redirect("/events");                //discuess what our proper page is
+            passport.authenticate("local") (req, res, function() {        ///returns user id to front end as res.data
+                res.send(req.user.id)                
             });
         }
     });
@@ -91,7 +91,8 @@ const info = (req,res) => {
         } else {
             res.send({
                 message: "User found",
-                data
+                name: data.name,
+                rating: data.rating
             });
         }
     })

@@ -43,10 +43,10 @@ db.mongoose
 
 
 
-app.use('/', home);                             //still don't get what this /api does
-app.get("/api", (req, res) => {
+app.use('/api', home);                             // /api/ leads to our home page with routes defined in userRoutes.js
+/*app.get("/api", (req, res) => {
     res.json({message: "Hello from server!" });
-});
+});*/
 
 require("./routes/eventRoutes.js")(app);
 

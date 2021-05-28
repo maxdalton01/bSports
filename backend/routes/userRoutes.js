@@ -7,8 +7,8 @@ router.get('/', (req,res) => {
     res.send('home page, force login/registration here');
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login'}), function(req, res) {
-    res.redirect('/events');
+router.post('/login', passport.authenticate('local'), function(req,res) {           //will return 401 unauthorized if failed, id otherwise
+    res.send(req.user.id)                
 });
 
 router.post('/register', express.json({extended: true}), express.urlencoded({extended: true}),account.register);
