@@ -49,6 +49,7 @@ app.use('/api', home);                             // /api/ leads to our home pa
 });*/
 
 require("./routes/eventRoutes.js")(app);
+require("./routes/faqRoutes.js")(app);
 
 // set up the port to listen
 const PORT = process.env.PORT || 3001;
