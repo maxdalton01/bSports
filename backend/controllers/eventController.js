@@ -114,8 +114,11 @@ Also, note that an event AND a sport is not necessary, you can simply
 call with one or the other.
 */
 exports.filter = (req, res) => {
-    Event.find(req.body.filter) 
+    console.log("in filter")
+    console.log(req.body.filter)
+    Event.find(req.body.filter)
       .then(data => {
+          console.log(req.body.filter)
           res.send(data);
       })
       .catch(err => {
