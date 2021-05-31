@@ -20,7 +20,7 @@ import Logout from "./components/Logout"
 		render={props => (
 		  sessionStorage.getItem('loggedinid') ?
 			<Component {...props} />
-				: <Redirect to = '/Login' />
+				: <Redirect to = '/login' />
 		)}
 	  />
 	);
@@ -35,9 +35,9 @@ function App() {
 			    <PrivRoute path = "/FAQ" exact component = {FAQ} />
 				<PrivRoute path = "/" exact component={HomePage} />
 				<PrivRoute path = "/logout" exact component = {Logout}/>
-				<PrivRoute path = "/Profile" exact component = {CreateAcc}/>
+				<Route path = "/register" exact component = {CreateAcc}/>
 				<PrivRoute path = "/Post" exact component={PostEvent} />
-				<Route path = "/Login" exact component={Login}/>
+				<Route path = "/login" exact component={Login}/>
 			</Switch>
 		</BrowserRouter>
 	)

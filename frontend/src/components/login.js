@@ -47,7 +47,7 @@ function Login (props) {
                 <button type="submit" value="Submit" className="button">Log in</button>
                 <p className="alreadyReg">
                     New to bSports? &ensp;   
-                    <Link to='/Profile'>
+                    <Link to='/register'>
                         <a>Create an Account</a>
                     </Link>
                 </p>

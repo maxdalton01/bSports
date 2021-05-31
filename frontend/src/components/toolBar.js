@@ -31,6 +31,7 @@ function ToolBar ()
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
+                {/*change link later*/}
                 <Link to='/login'>
                     <a  className={'toolBarButtons'} >My Profile</a>
 
