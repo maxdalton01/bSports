@@ -8,7 +8,6 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import CreateAcc from "./components/CreateAcc";
 import PostEvent from "./components/postEvent";
 import FAQ from "./components/FAQ";
-import login from "./components/login";
 import Login from "./components/login";
 
 sessionStorage.setItem('loggedinid', "");					//value is userid once logged in
