@@ -6,9 +6,7 @@ module.exports = app => {
     router.post("/", faq.create);
 
     // load all questions
-    router.get("/", (req, res)=> {
-        res.status(200).json({message: 'Connected!'});
-    });
+    router.get("/", faq.getAll);
 
     app.use('/api/FAQ', router);
 };
