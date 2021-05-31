@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../Styles/homePage.css';
-import './postEvent.css'
 import axios from 'axios';
+
 
 
 function FilterButton (props){
