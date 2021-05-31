@@ -20,10 +20,6 @@ class HomePage extends React.Component {
         this.handleLocation = this.handleLocation.bind(this);
     }
 
-
-
-
-
     componentDidMount() {
         axios.get(`http://localhost:3001/api/events/`)
             .then(response => {
