@@ -32,7 +32,9 @@ function ToolBar ()
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
                 <Link to='/login'>
-                    <a  className={'toolBarButtons'} href="">My Profile</a>
+                    <a  className={'toolBarButtons'} >My Profile</a>
+
+
                 </Link>
                 <Link to='/logout'>
                     <a  className={'toolBarButtons'} >Log Out</a>

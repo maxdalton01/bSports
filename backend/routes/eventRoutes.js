@@ -1,7 +1,7 @@
 module.exports = app => {
     const events = require("../controllers/eventController.js");
     var router = require("express").Router();
-
+    const express = require("express");
     // make new event
     router.post("/", events.create);
 
@@ -15,7 +15,7 @@ module.exports = app => {
     router.delete("/:id", events.delete)
 
     // filter events: takes in a JSON object
-    router.get("/filter", events.filter);
+    router.post("/filter", express.json({extended: true}), express.urlencoded({extended: true}),events.filter);
 
     app.use('/api/events', router);
 };

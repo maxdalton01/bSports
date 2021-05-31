@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, {Component, useState} from "react";
-//import axios from 'axios'
+import React, {useState} from "react";
 import "./CreateAcc.css"
 import { useHistory } from 'react-router-dom';
 
