@@ -21,12 +21,13 @@ function CreateAcc (props) {
          .then(res => {
              //alert(res.data)
              if (!res.data) {
-                 alert("Username already take or not a valid username")
+                 alert("Username already taken or not a valid username")
              }
              else {
-                 sessionStorage.setItem('loggedinid',res.data)
-                 alert("Successful register and logging now")
-                 alert(sessionStorage.getItem('loggedinid'))
+                 sessionStorage.setItem('loggedinid',res.data.userid)
+                 sessionStorage.setItem('username',res.data.username)
+//                 alert("Successful register and logging now")
+//                 alert(sessionStorage.getItem('loggedinid'))
                  history.push('/')
              }
          }) 
