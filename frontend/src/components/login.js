@@ -21,6 +21,7 @@ function Login (props) {
         axios.post('http://localhost:3001/api/login', user)
         .then(res => {
             sessionStorage.setItem('loggedinid',res.data)
+            sessionStorage.setItem('username', user.username)
             history.push('/')
         }) 
         .catch(err => {
