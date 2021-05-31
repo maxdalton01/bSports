@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import '../Styles/homePage.css';
 import axios from 'axios';
 import date from 'date-and-time';
+import FilterButton from "./filterButton";
 
 /*import {Link} from 'react-router-dom';*/
 
@@ -48,9 +49,7 @@ class HomePage extends React.Component {
 <body className={'background'}>
             <div className={'filterBorder'} >
                 <div>
-                    <button className={'filterButton'}>
-                        FILTER▽
-                    </button>
+                    <FilterButton data={this.state}/>
                     <div style={{padding: '16px'}}>
 
                         { this.state.allEvents.reverse().map(post=> <ul class ="posts"> <h1 class ="postTitle"> {post.sport} {" "} @
