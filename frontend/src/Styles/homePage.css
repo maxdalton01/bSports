@@ -16,7 +16,7 @@
 .posts
 {
     padding: 20px 30px;
-    background-color: #F2A900;
+    background-color: white;
     position: center;
     border-radius: 25px;
     text-align: center;
@@ -66,7 +66,7 @@
 {
 
     padding: 10px 0px 0px 0px;
-    margin-right: 90%;
+    margin-right: 100%;
     border-radius: 25px;
     color: black;
     float: top;
