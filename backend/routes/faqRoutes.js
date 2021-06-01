@@ -8,5 +8,8 @@ module.exports = app => {
     // load all questions
     router.get("/", faq.getAll);
 
+    //update answer
+    router.put("/:id", faq.answer);
+
     app.use('/api/FAQ', router);
 };

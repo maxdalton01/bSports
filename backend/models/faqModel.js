@@ -4,7 +4,8 @@ module.exports = mongoose => {
 	mongoose.Schema(
 	    {
 			question: String,
-            response: String
+            response: String,
+			like: Number
 	    }
 	)
     );
