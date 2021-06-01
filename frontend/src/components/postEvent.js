@@ -3,12 +3,14 @@ import axios from 'axios';
 import DateTimePicker from 'react-datetime-picker';
 import "./postEvent.css";
 import { useHistory } from 'react-router-dom';
+import NumericInput from 'react-numeric-input';
 
 function PostEvent (props) {
     const [sport, setSport] = useState('soccer');
     const [location, setLocation] = useState('hitch');
     const [date, setDate] = useState(new Date());
     const [description, setDescription] = useState('No description.');
+    const [wantedAttendees, setWantedAttendees] = useState(1);
 
     let history = useHistory(); // component used for redirecting
 
@@ -16,11 +18,15 @@ function PostEvent (props) {
     let handleSubmit = (event) => {
         event.preventDefault();
 
+        const currentUser = sessionStorage.getItem('username');
+
         const post = {
             sport: sport,
             location: location,
             date: date,
-            description: description
+            description: description,
+            wantedAttendees: wantedAttendees,
+            creator: currentUser
         };
 
         axios.post(`http://localhost:3001/api/events/`, post)
@@ -68,10 +74,17 @@ function PostEvent (props) {
                     </select>   
                 </label>
                 <br />
+                <label>
+                    Number of people wanted (2-50):
+                    <NumericInput min={2} max={50} onChange={setWantedAttendees}/>
+                </label>
+
+
+                <br />
                     <div>
                         <DateTimePicker date={date} onChange={setDate} disableCalendar={true} disableClock={true}
                             clearIcon={null} yearPlaceholder={"yyyy"} monthPlaceholder={"mm"} minutePlaceholder={"mm"}
-                            hourPlaceholder={"hh"} dayPlaceholder={"dd"}
+                            hourPlaceholder={"hh"} dayPlaceholder={"dd"} minDate={new Date()} maxDate={new Date("12/31/2050")}
                         />
                     </div>
                 <br />
