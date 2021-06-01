@@ -9,7 +9,7 @@ passport.deserializeUser(account.deserializeUser());
 
 const logout = (req,res) => {
     req.logout();
-    ///front end does redirects now
+    ///front end does redirects now so uneeded
 };
 const register = (req,res) => {
     account.register(new account({username: req.body.username}), req.body.password, (err,user) => {
@@ -18,7 +18,11 @@ const register = (req,res) => {
         }
         else{
             passport.authenticate("local") (req, res, function() {        ///returns user id to front end as res.data
-                res.send(req.user.id)                
+                body = {
+                    userid: req.user.id,
+                    username: req.body.username
+                }
+                res.send(body)                
             });
         }
     });

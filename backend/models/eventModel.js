@@ -7,7 +7,10 @@ module.exports = mongoose => {
 			location: String,
 	        attendees: Number,
 			description: String,
-			date: Date
+			date: Date,
+			listAttendees: [String],
+			creator: String,
+			wantedAttendees: Number
 	    }
 	)
     );

@@ -8,11 +8,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import CreateAcc from "./components/CreateAcc";
 import PostEvent from "./components/postEvent";
 import FAQ from "./components/FAQ";
-import login from "./components/login";
 import Login from "./components/login";
-
-sessionStorage.setItem('loggedinid', "");					//value is userid once logged in
-
+import Logout from "./components/Logout"
+////sessionStorage.setItem('loggedinid', "");			//commented out to not reset blank everytime
+////sessionStorage("username")		dict with key username and value is logged in user's name
 
   function PrivRoute({ component: Component, ...rest }) {		//if there is no session id redirect back to login page
 	return (
@@ -21,7 +20,7 @@ sessionStorage.setItem('loggedinid', "");					//value is userid once logged in
 		render={props => (
 		  sessionStorage.getItem('loggedinid') ?
 			<Component {...props} />
-				: <Redirect to = '/Login' />
+				: <Redirect to = '/login' />
 		)}
 	  />
 	);
@@ -35,10 +34,10 @@ function App() {
 			<Switch>
 			    <PrivRoute path = "/FAQ" exact component = {FAQ} />
 				<PrivRoute path = "/" exact component={HomePage} />
-				<PrivRoute path = "/logout" exact/>
-				<Route path = "/Profile" exact component = {CreateAcc}/>
+				<PrivRoute path = "/logout" exact component = {Logout}/>
+				<Route path = "/register" exact component = {CreateAcc}/>
 				<PrivRoute path = "/Post" exact component={PostEvent} />
-				<Route path = "/Login" exact component={Login}/>
+				<Route path = "/login" exact component={Login}/>
 			</Switch>
 		</BrowserRouter>
 	)
