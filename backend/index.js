@@ -1,6 +1,5 @@
 // index.js
 // contains the server
-
 const express = require("express");  // import express
 // cors allows for easy frontend and backend communication
 const cors = require("cors");
