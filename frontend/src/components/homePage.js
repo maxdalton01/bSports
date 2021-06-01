@@ -13,7 +13,8 @@ class HomePage extends React.Component {
         locationFilter: "hitch"};*/
     constructor(props) {
         super(props);
-        this.state = {allEvents: [], sportFilter:"soccer", locationFilter: "hitch"};
+        this.state = {allEvents: [], sportFilter:null, locationFilter: null, submitterValue: "Filter"
+        , submitterBackground: '#2D68C4', submitterColor: "white"};
 
         this.handleSport = this.handleSport.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,6 +58,11 @@ class HomePage extends React.Component {
     }
 
       handleSubmit = async (event) => {
+        if(this.state.sportFilter == null || this.state.locationFilter == null)
+        {
+            return
+        }
+
         try {
             event.preventDefault();
             const filterInside = {
@@ -71,14 +77,14 @@ class HomePage extends React.Component {
             await axios.post(`http://localhost:3001/api/events/filter`, filter)
                 .then(response => {
                     const allEvents = response.data;
-                    this.setState({allEvents: allEvents});
+                    this.setState({allEvents: allEvents, sportFilter: null, locationFilter: null, submitterValue:"CLEAR FILTER ✖",
+                        submitterBackground: 'white', submitterColor: "black"});
                 })
         }
         catch(err)
         {
             console.error(err);
         }
-
 
 
     }
@@ -114,12 +120,14 @@ class HomePage extends React.Component {
                                 <option value="wooden">John Wooden Center</option>
                             </select>
                         </label>
-                        <input type="submit" value="Filter" className="submitter"/>
+                        <input type="submit" value={this.state.submitterValue} style={{background: this.state.submitterBackground,
+                        color: this.state.submitterColor}} className="submitter"/>
                     </form>
+
                     <div style={{padding: '16px'}}>
 
                         { this.state.allEvents.reverse().map(post=> <ul class ="posts">
-                            <div className="creatorTitle"> posted by u/{post.creator}</div>
+                            <div className="creatorTitle">u/{post.creator} is looking for {post.wantedAttendees} attendees </div>
                             <h1 class ="postTitle"> {" "}{post.sport} {" "} @
                        {post.location}  </h1>
                            <h1 className={"date"}> {date.format(new Date(post.date), 'ddd hh:mm A, MMM DD YYYY')}</h1> <h1 style={{float: "top"}}> <ul className={"attendees"}> Attendees: {post.attendees} <ul>{'----------------'}<ul>
