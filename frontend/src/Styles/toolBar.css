@@ -20,6 +20,7 @@
     padding: 16px;
     font-size: 16px;
     border: none;
+    margin-top: 25%;
 
 }
 .toolBar
@@ -66,6 +67,7 @@
     text-align: center;
     padding: 16px;
     text-decoration: none;
+    margin-top: 54px;
 }
 .outsideButtonsContainer {
     overflow: hidden;
@@ -85,15 +87,19 @@
 
 .logo {
     align-items: center;
-    float: center;
+    margin-right: 48%;
+    margin-left: 44%;
+
 }
 
 .logoImage {
-    float: center;
-    width: 100px;
+    width: 90px;
     height: auto;
-    margin-top: -18%;
-    margin-bottom: -20%;
     margin-left: 50%;
     margin-right: 50%;
+    margin-bottom: -78px ;
+}
+.test
+{
+    white-space: nowrap;
 }
