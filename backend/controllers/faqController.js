@@ -23,7 +23,7 @@ exports.create = (req, res) => {
 
 exports.getAll = (req, res) => {
     //return all
-    Faq.find()
+    Faq.find().sort({like: -1})
       .then(data => {
           res.send(data);
       })
