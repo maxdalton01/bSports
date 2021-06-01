@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../Styles/toolBar.css';
 import {Link} from 'react-router-dom';
 import logo from "./uclalogo.png";
+
+let dropdown = <nav className={'container'}>
+<Link to='/login'>
+    <a  className={'toolBarButtons'} href="">My Profile</a>
+</Link>
+<Link to='/logout'>
+    <a  className={'toolBarButtons'} >Log Out</a>
+</Link>
+</nav> 
 
 function ToolBar ()
 {
@@ -22,8 +31,9 @@ function ToolBar ()
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>
+                {/*change link later*/}
                 <Link to='/login'>
-                    <a  className={'toolBarButtons'} href="">My Profile</a>
+                    <a  className={'toolBarButtons'} >My Profile</a>
 
 
                 </Link>
@@ -31,7 +41,6 @@ function ToolBar ()
                     <a  className={'toolBarButtons'} >Log Out</a>
                 </Link>
             </nav>
-
         </div>
         </div>
 

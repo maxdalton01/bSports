@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -21,6 +21,7 @@ function Login (props) {
         axios.post('http://localhost:3001/api/login', user)
         .then(res => {
             sessionStorage.setItem('loggedinid',res.data)
+            sessionStorage.setItem('username', user.username)
             history.push('/')
         }) 
         .catch(err => {
@@ -46,7 +47,7 @@ function Login (props) {
                 <button type="submit" value="Submit" className="button">Log in</button>
                 <p className="alreadyReg">
                     New to bSports? &ensp;   
-                    <Link to='/Profile'>
+                    <Link to='/register'>
                         <a>Create an Account</a>
                     </Link>
                 </p>

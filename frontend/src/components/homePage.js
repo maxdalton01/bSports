@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import '../Styles/homePage.css';
 import axios from 'axios';
 import date from 'date-and-time';
