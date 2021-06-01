@@ -11,7 +11,8 @@ class FAQ extends React.Component {
             question:"",
             response:"No response yet",
             like: 0,
-            editClicked: false
+            editClicked: false,
+            clickedCommentID:""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleQuestion = this.handleQuestion.bind(this);
@@ -71,6 +72,7 @@ class FAQ extends React.Component {
         }
     }
 
+    // updates the like count specific to the question/post's ID
     handleLike = (thisQuestion) => {
         try {
             const url = `http://localhost:3001/api/FAQ/` + thisQuestion.currentTarget.id;
@@ -86,6 +88,42 @@ class FAQ extends React.Component {
         }
     }
 
+    // stores the ID of the question/post in a state to be compared when mapping
+    handleEditClicked(clickedId) {
+        this.setState({editClicked: !this.state.editClicked, clickedCommentID: clickedId});
+    } 
+
+    // handles editing the response similarly to updating the like count
+    handleResponseSubmit = () => {
+        // if they don't want to edit or there is no response yet, just return and clear ID
+        if (this.state.response == "" || this.state.response == "No response yet")
+        {
+            this.setState({editClicked: !this.state.editClicked, clickedCommentID: ""});
+            return;
+        }
+        else
+        {
+            const responseEdit = {
+                response: this.state.response
+            }
+    
+            const url = `http://localhost:3001/api/FAQ/response/` + this.state.clickedCommentID;
+            try {
+                axios.put(url, responseEdit)
+                    .then(res => {
+                        console.log(res);
+                        this.getAllQuestions();
+                    })
+            }
+            catch(err) {
+                console.error(err)
+            }
+            
+            // reset the edit button clicked state, the comment ID, and the response input
+            this.setState({editClicked: !this.state.editClicked, clickedCommentID: "", response: ""});
+        }
+    }
+
     // display all the questions
     displayQuestions = (allQuestions) => {
         // if there are no questions, return null
@@ -95,24 +133,31 @@ class FAQ extends React.Component {
         return allQuestions.map((post, index) => (
             <div key={index} className="question-box">
                 <h3 className="question-title">{post.question}</h3>
-                {//<p className="response">{post.response}</p>
-            }
                 { 
-                // possible method for an edit button but should check by json id
-                    !this.state.editClicked ? (
-                        <p className="response">{post.response}</p>
+                // if the FAQ json object's ID matches the ID stored in state after hitting edit button
+                    this.state.clickedCommentID == post._id ? (
+                        // make an input box to type in the updated response
+                        <div className="editResponse"><input type="text" className="form-control" value={this.state.value} onChange={this.handleResponse} placeholder={post.response} /></div>
                     ) : (
-                        <div className="editResponse"><input type="text" className="form-control" value={this.state.value} onChange={this.handleResponse} placeholder="response" /></div>
+                        // if the ID doesn't match, a.k.a. for all other posts, just display their responses
+                        <p className="response">{post.response}</p>
                     )
-                }
+                    }
                 <ul className="like-count">
                     {post.like} &ensp;
                     <button id = {post._id} className="likeButton" onClick={this.handleLike}>like</button>
                     {
+                        // if the edit button hasn't been clicked, displayy the edit button
                         !this.state.editClicked ? (
-                            <button className="editButton" onClick={() => {this.setState({editClicked: !this.state.editClicked});}}>Edit Response</button>
+                            <button className="editButton" onClick={() => {this.handleEditClicked(post._id)}}>Edit Response</button>
                         ) : (
-                            <button className="editButton" onClick={() => {this.setState({editClicked: !this.state.editClicked});}}>Save</button>
+                            // if the edit button has been clicked, find the post with the matching ID and display save button
+                            this.state.clickedCommentID == post._id ? (
+                                    <button className="editButton" onClick={() => {this.handleResponseSubmit()}}>Save</button>
+                            ) : (
+                                // for all other posts, leave the edit button there
+                                <button className="editButton" onClick={() => {this.handleEditClicked(post._id)}}>Edit Response</button>
+                            )
                         )
                     }
                 </ul>
