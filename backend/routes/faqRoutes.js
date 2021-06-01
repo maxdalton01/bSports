@@ -9,7 +9,10 @@ module.exports = app => {
     router.get("/", faq.getAll);
 
     //update answer
-    router.put("/:id", faq.answer);
+    router.put("/response/:id", faq.answer);
+
+    //add like
+    router.put("/:id", faq.addLike);
 
     app.use('/api/FAQ', router);
 };

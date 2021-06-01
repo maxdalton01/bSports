@@ -5,7 +5,8 @@ exports.create = (req, res) => {
     // create new faq
     const faq = new Faq({
         question: req.body.question,
-        response: req.body.response
+        response: req.body.response,
+        like: 0
     });
 
     // save in database
@@ -60,31 +61,32 @@ exports.answer = (req, res) => {
         });
 }
 
-// exports.addLike = (req, res) => {
-//     if(!req.body) {
-//         return res.status(400).send({ // standard code for bad request
-//             message: "Bad request"
-//         });
-//     }
-//     const id = req.params.id;
+//user can like a question
+exports.addLike = (req, res) => {
+    if(!req.body) {
+        return res.status(400).send({ // standard code for bad request
+            message: "Bad request"
+        });
+    }
+    const id = req.params.id;
 
-//     // deprecation warning without the useFindAndModify set to false
-//     // $inc is a mongodb functionality for incrementing int types in database
-//     Event.findByIdAndUpdate(id, {$inc : {'attendees' : 1} }, { useFindAndModify: false })
-//       .then((data) => {
-//           if(!data) {
-//               res.status(404).send({
-//                   message: "Event not found"
-//               });
-//           } else {
-//               res.send({
-//                   message: "Event found and attendee added"
-//               });
-//           }
-//       })
-//       .catch(err => {
-//           res.status(500).send({
-//               message: "Error updating database"
-//           });
-//       });
-// };
+    // deprecation warning without the useFindAndModify set to false
+    // $inc is a mongodb functionality for incrementing int types in database
+    Faq.findByIdAndUpdate(id, {$inc : {'like' : 1} }, { useFindAndModify: false })
+      .then((data) => {
+          if(!data) {
+              res.status(404).send({
+                  message: "Question not found"
+              });
+          } else {
+              res.send({
+                  message: "Question was helpful!"
+              });
+          }
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Error updating database"
+          });
+      });
+};
