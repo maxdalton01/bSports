@@ -9,5 +9,6 @@ db.mongoose = mongoose;
 db.url = dbLogin.url;
 db.events = require("./eventModel.js")(mongoose);
 db.users = require("./userModel.js")(mongoose);
+db.faq = require("./faqModel.js")(mongoose);
 
 module.exports = db;
