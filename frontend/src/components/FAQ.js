@@ -10,7 +10,8 @@ class FAQ extends React.Component {
             allQuestions: [],
             question:"",
             response:"No response yet",
-            like: 0
+            like: 0,
+            editClicked: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleQuestion = this.handleQuestion.bind(this);
@@ -70,6 +71,21 @@ class FAQ extends React.Component {
         }
     }
 
+    handleLike = (thisQuestion) => {
+        try {
+            const url = `http://localhost:3001/api/FAQ/` + thisQuestion.currentTarget.id;
+
+            axios.put(url)
+                .then(res => {
+                    console.log(res);
+                    this.getAllQuestions();
+                })
+        }
+        catch(err) {
+            console.error(err)
+        }
+    }
+
     // display all the questions
     displayQuestions = (allQuestions) => {
         // if there are no questions, return null
@@ -77,10 +93,29 @@ class FAQ extends React.Component {
 
         // map through all the questions, creating a div for each one
         return allQuestions.map((post, index) => (
-            <div key={index} className="question-posts">
-                <h3>{post.question}</h3>
-                <p>{post.response}</p>
-                <p>{post.like}</p>
+            <div key={index} className="question-box">
+                <h3 className="question-title">{post.question}</h3>
+                {//<p className="response">{post.response}</p>
+            }
+                { 
+                // possible method for an edit button but should check by json id
+                    !this.state.editClicked ? (
+                        <p className="response">{post.response}</p>
+                    ) : (
+                        <div className="editResponse"><input type="text" className="form-control" value={this.state.value} onChange={this.handleResponse} placeholder="response" /></div>
+                    )
+                }
+                <ul className="like-count">
+                    {post.like} &ensp;
+                    <button id = {post._id} className="likeButton" onClick={this.handleLike}>like</button>
+                    {
+                        !this.state.editClicked ? (
+                            <button className="editButton" onClick={() => {this.setState({editClicked: !this.state.editClicked});}}>Edit Response</button>
+                        ) : (
+                            <button className="editButton" onClick={() => {this.setState({editClicked: !this.state.editClicked});}}>Save</button>
+                        )
+                    }
+                </ul>
             </div>
         ))
     }
