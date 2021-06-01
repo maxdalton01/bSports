@@ -29,7 +29,7 @@
 {
     background-color: #2D68C4;
     border-radius: 25px;
-    padding: 0px 14px;
+    padding: 10px 20px;
     float: right;
 
 }
@@ -60,4 +60,16 @@
 .date
 {
     font-family: 'Courier New', monospace;
+    font-size: 40px;
+}
+.creatorTitle
+{
+
+    padding: 10px 0px 0px 0px;
+    margin-right: 90%;
+    border-radius: 25px;
+    color: black;
+    float: top;
+    white-space: nowrap;
+
 }

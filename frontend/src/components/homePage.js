@@ -24,6 +24,7 @@ class HomePage extends React.Component {
         axios.get(`http://localhost:3001/api/events/`)
             .then(response => {
                 const allEvents = response.data;
+                console.log(allEvents)
                 this.setState({allEvents});
             })
     }
@@ -117,7 +118,9 @@ class HomePage extends React.Component {
                     </form>
                     <div style={{padding: '16px'}}>
 
-                        { this.state.allEvents.reverse().map(post=> <ul class ="posts"> <h1 class ="postTitle"> {post.sport} {" "} @
+                        { this.state.allEvents.reverse().map(post=> <ul class ="posts">
+                            <div className="creatorTitle"> posted by u/{post.creator}</div>
+                            <h1 class ="postTitle"> {" "}{post.sport} {" "} @
                        {post.location}  </h1>
                            <h1 className={"date"}> {date.format(new Date(post.date), 'ddd hh:mm A, MMM DD YYYY')}</h1> <h1 style={{float: "top"}}> <ul className={"attendees"}> Attendees: {post.attendees} <ul>{'----------------'}<ul>
                             </ul><button id = {post._id} className='rsvpButton' onClick={this.handleRSVP}> RSVP</button>
