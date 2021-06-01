@@ -26,6 +26,11 @@
 
 .submitButton {
     margin-bottom: 100px;
+    font-size: 20px;
+    color: white;
+    background-color: #2D68C4;
+    border-color: #2D68C4;
+    margin: 50px;
 }
 
 .answers {
@@ -35,4 +40,57 @@
 .topImage {
     height: auto;
     width: 100%;
+    flex: 1;
+}
+
+.question-box {
+    font-family: Verdana;
+    text-align: left;
+    border-width: 11px;
+    border-style: double;
+    border-color: #2D68C4;
+    margin: 25px;
+    border-width: 10px;
+    border-radius: 25px;
+    background-color: #F2A900;
+}
+
+.response {
+    text-align: left;
+    margin-left: 50px;
+    color: black;
+}
+
+.like-count {
+    text-align: left;
+    margin-left: 16px;
+    color: black;
+}
+
+.question-title {
+    font-family: Verdana;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.editButton {
+    position:absolute;
+    right: 0;
+    margin-right: 85px;
+    height: 21px;
+    font-size: small;
+    color: white;
+    background-color: #2D68C4;
+    border-color: #2D68C4;
+}
+
+.likeButton {
+    color: white;
+    background-color: #2D68C4;
+    border-color: #2D68C4;
+}
+.editResponse {
+    margin-left: 50px;
+    margin-bottom: 16px;
+    margin-right: 50px;
 }
