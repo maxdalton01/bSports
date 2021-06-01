@@ -14,5 +14,8 @@ module.exports = app => {
     //add like
     router.put("/:id", faq.addLike);
 
+    //delete
+    router.delete("/:id", faq.delete);
+
     app.use('/api/FAQ', router);
 };

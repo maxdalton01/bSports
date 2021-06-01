@@ -90,3 +90,26 @@ exports.addLike = (req, res) => {
           });
       });
 };
+
+//delete 
+exports.delete = (req, res) => {
+    const id = req.params.id; // /api/faq/{request id}
+
+    Faq.findByIdAndRemove(id, {useFindAndModify: false})
+      .then(data => {
+          if(!data) {
+              res.status(404).send({ // standard error code for not found
+                  message: "Event not found"
+              });
+          } else {
+              res.send({
+                  message: "Event found and removed"
+              });
+          }
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Error removing from database"
+          });
+      });
+};
