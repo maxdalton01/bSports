@@ -1,7 +1,6 @@
 module.exports = app => {
     const faq = require("../controllers/faqController.js");
     var router = require("express").Router();
-    const express = require("express");
 
     //make new question
     router.post("/", faq.create);
