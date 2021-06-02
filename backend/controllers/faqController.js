@@ -6,7 +6,8 @@ exports.create = (req, res) => {
     const faq = new Faq({
         question: req.body.question,
         response: req.body.response,
-        like: 0
+        like: 0,
+        likeList: []
     });
 
     // save in database
@@ -41,6 +42,7 @@ exports.answer = (req, res) => {
         });
     }
     const id = req.params.id;
+    
 
     Faq.findByIdAndUpdate(id, {response: req.body.response}, { useFindAndModify: false })
         .then((data) => {
@@ -69,10 +71,11 @@ exports.addLike = (req, res) => {
         });
     }
     const id = req.params.id;
+    const user = req.params.user;
 
     // deprecation warning without the useFindAndModify set to false
     // $inc is a mongodb functionality for incrementing int types in database
-    Faq.findByIdAndUpdate(id, {$inc : {'like' : 1} }, { useFindAndModify: false })
+    Faq.findByIdAndUpdate(id, {$inc : {'like' : 1}, $push: { likeList: user } }, { useFindAndModify: false })
       .then((data) => {
           if(!data) {
               res.status(404).send({
