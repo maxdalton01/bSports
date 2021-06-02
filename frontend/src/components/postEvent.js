@@ -44,7 +44,7 @@ function PostEvent (props) {
                 <label >
                     Description (max 100 characters):
                     <br />
-                    <textarea type="text" maxlength="100" rows="4" cols="25" onChange={(evt) => setDescription(evt.target.value)} 
+                    <textarea type="text" maxlength="50" rows="4" cols="25" onChange={(evt) => setDescription(evt.target.value)} 
                         className="textField" placeholder="Describe event here" required
                     />
                 </label>
@@ -76,16 +76,16 @@ function PostEvent (props) {
                 <br />
                 <label>
                     Number of people wanted (2-50):
-                    <NumericInput min={2} max={50} onChange={setWantedAttendees} required/>
+                    <NumericInput min={2} max={50} onChange={setWantedAttendees} required />
                 </label>
 
 
                 <br />
                     <div>
-                        <DateTimePicker date={date} onChange={setDate} disableCalendar={true} disableClock={true}
+                        <DateTimePicker onChange={setDate} disableCalendar={true} disableClock={true}
                             clearIcon={null} yearPlaceholder={"yyyy"} monthPlaceholder={"mm"} minutePlaceholder={"mm"}
                             hourPlaceholder={"hh"} dayPlaceholder={"dd"} minDate={new Date()} maxDate={new Date("12/31/2050")}
-                            required
+                            
                         />
                     </div>
                 <br />
