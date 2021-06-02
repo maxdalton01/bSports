@@ -15,6 +15,7 @@ let dropdown = <nav className={'container'}>
 function ToolBar ()
 {
     return (
+        <div className={'test'}>
         <div className={'outsideButtonsContainer'} style={{background: '#2D68C4'}}>
             <Link to='/post'>
                 <a className={'outsideButtons'} >POST✓</a>
@@ -41,6 +42,7 @@ function ToolBar ()
                     <a  className={'toolBarButtons'} >Log Out</a>
                 </Link>
             </nav>
+        </div>
         </div>
         </div>
 
