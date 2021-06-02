@@ -29,6 +29,7 @@ function ToolBar ()
         <div className="logo">
             <img src={logo} className="logoImage"/>
         </div>
+        
         <div className={'toolBar'}>
             <button className="dropDown">ACCOUNT▽</button>
             <nav className={'container'}>

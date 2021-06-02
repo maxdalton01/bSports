@@ -25,3 +25,7 @@ h3 {
     border-color: #2D68C4;
     margin: 50px;
 }
+
+textarea {
+    resize: none;
+}
