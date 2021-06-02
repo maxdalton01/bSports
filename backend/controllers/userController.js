@@ -94,7 +94,6 @@ const info = (req,res) => {
             });
         } else {
             res.send({
-                message: "User found",
                 name: data.name,
                 rating: data.rating
             });
