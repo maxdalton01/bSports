@@ -16,7 +16,7 @@
 .posts
 {
     padding: 20px 30px;
-    background-color: #F2A900;
+    background-color: white;
     position: center;
     border-radius: 25px;
     text-align: center;
@@ -29,7 +29,7 @@
 {
     background-color: #2D68C4;
     border-radius: 25px;
-    padding: 0px 14px;
+    padding: 10px 20px;
     float: right;
 
 }
@@ -60,4 +60,17 @@
 .date
 {
     font-family: 'Courier New', monospace;
+    font-size: 35px;
 }
+.creatorTitle
+{
+
+    padding: 10px 0px 0px 0px;
+    margin-right: 100%;
+    border-radius: 25px;
+    color: black;
+    float: top;
+    white-space: nowrap;
+    font-size: small;
+}
+

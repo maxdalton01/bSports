@@ -1,6 +1,6 @@
 /* for homepage header */
 
-{/*.toolBarButtons
+/*.toolBarButtons
 {
     border: 10px black;
     margin: 3px;
@@ -12,7 +12,7 @@
 .toolBar
 {
     background-color: black;
-}*/}
+}*/
 .dropDown
 {
     background-color: #2D68C4;
@@ -20,13 +20,13 @@
     padding: 16px;
     font-size: 16px;
     border: none;
-
+    margin-top: 25%;
 }
 .toolBar
 {
     float: right;
     overflow: hidden;
-  
+    margin-top: -30px;
 }
 .container
 {
@@ -66,6 +66,7 @@
     text-align: center;
     padding: 16px;
     text-decoration: none;
+    /* margin-top: 54px; */
 }
 .outsideButtonsContainer {
     overflow: hidden;
@@ -82,18 +83,38 @@
 {
     background-color: #ffdf93;
 }
+/*
+img {
+    display: block; 
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    width: 90px;
+    height: auto;
+    border: none;
+    font-size: 16px;
+}
+*/
 
 .logo {
-    align-items: center;
+    display: block; 
+    width: 1px;
+    white-space: nowrap;
     float: center;
 }
 
+
 .logoImage {
-    float: center;
-    width: 100px;
+    /* left: 50%; */
+    left: 46%;
+    position: absolute;
+    border: 0px;
+    display: block; 
+    width: 90px;
     height: auto;
-    margin-top: -18%;
-    margin-bottom: -20%;
-    margin-left: 50%;
-    margin-right: 50%;
+}
+
+.test
+{
+    white-space: nowrap;
 }
