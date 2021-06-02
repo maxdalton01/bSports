@@ -9,7 +9,8 @@ import CreateAcc from "./components/CreateAcc";
 import PostEvent from "./components/postEvent";
 import FAQ from "./components/FAQ";
 import Login from "./components/login";
-import Logout from "./components/Logout"
+import Logout from "./components/Logout";
+import MyProfile from "./components/myProfile";
 ////sessionStorage.setItem('loggedinid', "");			//commented out to not reset blank everytime
 ////sessionStorage("username")		dict with key username and value is logged in user's name
 
@@ -36,6 +37,7 @@ function App() {
 				<PrivRoute path = "/" exact component={HomePage} />
 				<PrivRoute path = "/logout" exact component = {Logout}/>
 				<Route path = "/register" exact component = {CreateAcc}/>
+				<PrivRoute path = "/user" exact component={MyProfile} />
 				<PrivRoute path = "/Post" exact component={PostEvent} />
 				<Route path = "/login" exact component={Login}/>
 			</Switch>

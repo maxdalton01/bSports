@@ -19,15 +19,12 @@ function CreateAcc (props) {
 
         axios.post('http://localhost:3001/api/register/', user)
          .then(res => {
-             //alert(res.data)
              if (!res.data) {
                  alert("Username already taken or not a valid username")
              }
              else {
                  sessionStorage.setItem('loggedinid',res.data.userid)
                  sessionStorage.setItem('username',res.data.username)
-//                 alert("Successful register and logging now")
-//                 alert(sessionStorage.getItem('loggedinid'))
                  history.push('/')
              }
          }) 
