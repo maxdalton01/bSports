@@ -20,29 +20,81 @@ class HomePage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleLocation = this.handleLocation.bind(this);
     }
+    getAllEvents = async() =>
+    {
+        try {
+            await axios.get(`http://localhost:3001/api/events/`)
+                .then(response => {
+                    const allEvents = response.data;
+                    const now = new Date();
+                    let eventDate;
+                    for(let i = 0; i < allEvents.length;i++)
+                    {
+                        eventDate = new Date(allEvents[i].date);
+                        if(eventDate < now)
+                        {
+                            const url = `http://localhost:3001/api/events/`+ allEvents[i]._id;
+                            axios.delete(url);
+                        }
+                    }
+                });
+            await axios.get(`http://localhost:3001/api/events/`)
+                .then(response => {
+                    const allEvents = response.data;
+                    console.log(allEvents)
+                    this.setState({allEvents});
+                })
+        }
+        catch(err)
+        {
+            console.error(err);
+        }
 
+    }
     componentDidMount() {
-        axios.get(`http://localhost:3001/api/events/`)
+       /* axios.get(`http://localhost:3001/api/events/`)
             .then(response => {
                 const allEvents = response.data;
                 console.log(allEvents)
                 this.setState({allEvents});
-            })
+            }) */
+        this.getAllEvents();
     }
         handleRSVP = async(RSVP)=>
         {
             try {
+                const eventId = RSVP.currentTarget.id;
+                const currentUser = sessionStorage.getItem('username');
+                const filterInside = {
+                  _id: eventId
 
-                const url = `http://localhost:3001/api/events/` + RSVP.currentTarget.id;
-                await axios.put(url)
+                };
+                const filter = {
+                    filter: filterInside
+
+                };
+                let oneEvent;
+                await axios.post(`http://localhost:3001/api/events/filter`, filter)
                     .then(response => {
-                        console.log("worked!")
-                    })
-                await axios.get (`http://localhost:3001/api/events/`)
-                    .then(response => {
-                        const allEvents = response.data;
-                        this.setState({allEvents: allEvents});
-                    })
+                        oneEvent = response.data[0];
+                        console.log(oneEvent)
+                    });
+                const attendeeList = oneEvent.listAttendees;
+                const url = `http://localhost:3001/api/events/` + eventId + '/' + currentUser;
+
+                if(!attendeeList.includes(currentUser) && oneEvent.wantedAttendees >= oneEvent.attendees)
+                {
+                    await axios.put(url)
+                        .then(response => {
+                            console.log("worked!")
+                        })
+                    /*await axios.get(`http://localhost:3001/api/events/`)
+                        .then(response => {
+                            const allEvents = response.data;
+                            this.setState({allEvents: allEvents});
+                        })*/
+                    await this.getAllEvents();
+                }
             }
             catch(err)
             {
@@ -126,9 +178,9 @@ class HomePage extends React.Component {
 
                     <div style={{padding: '16px'}}>
 
-                        { this.state.allEvents.reverse().map(post=> <ul class ="posts">
+                        { this.state.allEvents.reverse().map(post=> <ul className="posts">
                             <div className="creatorTitle">Posted by u/{post.creator} </div>
-                            <h1 class ="postTitle"> {" "}{post.sport} {" "} @
+                            <h1 className="postTitle"> {" "}{post.sport} {" "} @
                        {post.location}  </h1>
                            <h1 className={"date"}> {date.format(new Date(post.date), 'ddd hh:mm A, MMM DD YYYY')}</h1> <h1 style={{float: "top"}}>
                             <ul className={"attendees"}> Attendees: {post.attendees}/{post.wantedAttendees} <ul>{'----------------'}<ul>
