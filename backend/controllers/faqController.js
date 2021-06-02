@@ -75,7 +75,7 @@ exports.addLike = (req, res) => {
 
     // deprecation warning without the useFindAndModify set to false
     // $inc is a mongodb functionality for incrementing int types in database
-    Faq.findByIdAndUpdate(id, {$inc : {'like' : 1} }, { useFindAndModify: false })
+    Faq.findByIdAndUpdate(id, {$inc : {'like' : 1},  $push: { likeList: user } }, { useFindAndModify: false })
       .then((data) => {
           if(!data) {
               res.status(404).send({
