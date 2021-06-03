@@ -73,18 +73,47 @@ class FAQ extends React.Component {
     }
 
     // updates the like count specific to the question/post's ID
-    handleLike = (thisQuestion) => {
-        try {
-            const url = `http://localhost:3001/api/FAQ/` + thisQuestion.currentTarget.id;
-
-            axios.put(url)
-                .then(res => {
-                    console.log(res);
-                    this.getAllQuestions();
-                })
+    handleLike = async(thisQuestion) => {
+        var likedList = [];
+        const currentUser = sessionStorage.getItem('username');
+        const url2 = `http://localhost:3001/api/FAQ/` + thisQuestion.currentTarget.id;
+        const questionID = thisQuestion.currentTarget.id;
+        await axios.get(url2)
+            .then(res => {
+                console.log(res.data);
+                likedList = res.data.likeList;
+                console.log(likedList);
+            })
+            .catch(() => {
+                alert("Unable to retrieve liked list.")
+            });
+        if (likedList.length == 0 || likedList.includes[null])
+        {
+            try {
+                const url = `http://localhost:3001/api/FAQ/` + questionID + `/` + currentUser;
+                axios.put(url)
+                    .then(res => {
+                        console.log(res);
+                        this.getAllQuestions();
+                    })
+            }
+            catch(err) {
+                console.error(err)
+            }
         }
-        catch(err) {
-            console.error(err)
+        else if (!likedList.includes(currentUser))
+        {
+            try {
+                const url = `http://localhost:3001/api/FAQ/` + questionID + `/` + currentUser;
+                axios.put(url)
+                    .then(res => {
+                        console.log(res);
+                        this.getAllQuestions();
+                    })
+            }
+            catch(err) {
+                console.error(err)
+            }
         }
     }
 
