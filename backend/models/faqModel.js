@@ -5,7 +5,8 @@ module.exports = mongoose => {
 	    {
 			question: String,
             response: String,
-			like: Number
+			like: Number,
+			likeList: [String]
 	    }
 	)
     );
