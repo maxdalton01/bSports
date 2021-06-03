@@ -116,3 +116,11 @@ exports.delete = (req, res) => {
           });
       });
 };
+
+exports.getLikes = (req, res) => {
+    const id = req.params.id;
+    Faq.findById(id)
+        .then(data => {
+            res.send(data.likeList);
+        })
+};

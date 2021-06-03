@@ -17,5 +17,7 @@ module.exports = app => {
     //delete
     router.delete("/:id", faq.delete);
 
+    router.get("/:id", faq.getLikes);
+
     app.use('/api/FAQ', router);
 };
