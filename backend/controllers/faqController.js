@@ -121,6 +121,11 @@ exports.getLikes = (req, res) => {
     const id = req.params.id;
     Faq.findById(id)
         .then(data => {
-            res.send(data.likeList);
-        })
+            res.send(data.likeList)
+            })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error returning from database"
+            });
+        });
 };
