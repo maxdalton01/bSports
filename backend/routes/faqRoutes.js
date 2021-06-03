@@ -12,7 +12,10 @@ module.exports = app => {
     router.put("/response/:id", faq.answer);
 
     //add like
-    router.put("/:id", faq.addLike);
+    router.put("/:id/:user", faq.addLike);
+
+    //delete
+    router.delete("/:id", faq.delete);
 
     app.use('/api/FAQ', router);
 };
