@@ -61,6 +61,7 @@ class FAQ extends React.Component {
                     console.log(res);
                     // calls getAllQuestions to update question array
                     this.getAllQuestions();
+                    // calls handleClearing to empty input box
                     this.handleClearing();
                     this.setState({question: ""});
                 })
@@ -78,16 +79,17 @@ class FAQ extends React.Component {
         const currentUser = sessionStorage.getItem('username');
         const url2 = `http://localhost:3001/api/FAQ/` + thisQuestion.currentTarget.id;
         const questionID = thisQuestion.currentTarget.id;
+        // get the list of users who've liked a question
         await axios.get(url2)
             .then(res => {
                 console.log(res.data);
                 likedList = res.data.likeList;
-                console.log(likedList);
             })
             .catch(() => {
                 alert("Unable to retrieve liked list.")
             });
-        if (likedList.length == 0 || likedList.includes[null])
+        // if no one has liked it, safe to let user like it
+        if (likedList.length === 0 || likedList.includes[null])
         {
             try {
                 const url = `http://localhost:3001/api/FAQ/` + questionID + `/` + currentUser;
@@ -101,6 +103,7 @@ class FAQ extends React.Component {
                 console.error(err)
             }
         }
+        // check if the user's name is in the list, if not, update like
         else if (!likedList.includes(currentUser))
         {
             try {
@@ -125,11 +128,12 @@ class FAQ extends React.Component {
     // handles editing the response similarly to updating the like count
     handleResponseSubmit = () => {
         // if they don't want to edit or there is no response yet, just return and clear ID
-        if (this.state.response == "" || this.state.response == "No response yet")
+        if (this.state.response === "" || this.state.response === "No response yet")
         {
             this.setState({editClicked: !this.state.editClicked, clickedCommentID: ""});
             return;
         }
+        // update response by sending it to back end
         else
         {
             const responseEdit = {
@@ -164,7 +168,7 @@ class FAQ extends React.Component {
                 <h3 className="question-title">{post.question}</h3>
                 { 
                 // if the FAQ json object's ID matches the ID stored in state after hitting edit button
-                    this.state.clickedCommentID == post._id ? (
+                    this.state.clickedCommentID === post._id ? (
                         // make an input box to type in the updated response
                         <div className="editResponse"><input type="text" className="form-control" value={this.state.value} onChange={this.handleResponse} placeholder={post.response} /></div>
                     ) : (
@@ -181,7 +185,7 @@ class FAQ extends React.Component {
                             <button className="editButton" onClick={() => {this.handleEditClicked(post._id)}}>Edit Response</button>
                         ) : (
                             // if the edit button has been clicked, find the post with the matching ID and display save button
-                            this.state.clickedCommentID == post._id ? (
+                            this.state.clickedCommentID === post._id ? (
                                     <button className="editButton" onClick={() => {this.handleResponseSubmit()}}>Save</button>
                             ) : (
                                 // for all other posts, leave the edit button there
@@ -207,30 +211,6 @@ class FAQ extends React.Component {
                     <img src={field} />
                 </div>
                 <h1>Frequently Asked Questions</h1>
-                <li className="questions">
-                        What is your name?
-                        <div className="answers">
-                            Ruben
-                        </div>
-                </li>
-                <li className="questions">
-                        What is hello world?
-                        <div className="answers">
-                            Everyone's first line of code involved the phrase "Hello World"
-                        </div>
-                </li>
-                <li className="questions">
-                        Hola, me llamo Ruben.
-                        <div className="answers">
-                            Hola Ruben
-                        </div>
-                </li>
-                <li className="questions">
-                        What kind of questions would people have?
-                        <div className="answers">
-                            What locations can I list my event at?
-                        </div>
-                </li>
                 <form onSubmit={this.handleSubmit}>
                     <h3>Ask Your Own Question</h3>
 
