@@ -1,6 +1,8 @@
 const db = require("../models");
 const Event = db.events;
 
+// takes a body, location, description, date, creator, and wanted attendees
+// posts them to backend
 exports.create = (req, res) => {
     // validate POSTed event data
     if ( req.body.sport === null || req.body.sport.length == 0 ) {
@@ -40,6 +42,7 @@ exports.create = (req, res) => {
       });
 };
 
+// deletes event: mainly used to delete events that have passed
 exports.delete = (req, res) => {
     const id = req.params.id; // /api/events/{request id}
 
@@ -62,6 +65,7 @@ exports.delete = (req, res) => {
       });
 };
 
+// return all events
 exports.getAll = (req, res) => {
     //return all
     Event.find()
@@ -75,6 +79,7 @@ exports.getAll = (req, res) => {
       });
 };
 
+// 'like button' functionality
 exports.addAttendee = (req, res) => {
     if(!req.body) {
         return res.status(400).send({ // standard code for bad request
@@ -86,6 +91,7 @@ exports.addAttendee = (req, res) => {
 
     // deprecation warning without the useFindAndModify set to false
     // $inc is a mongodb functionality for incrementing int types in database
+    // $push adds to backend lists
     Event.findByIdAndUpdate(id, {$inc : {'attendees' : 1},  $push: { listAttendees: user } }, { useFindAndModify: false })
       .then((data) => {
           if(!data) {
@@ -118,11 +124,8 @@ Also, note that an event AND a sport is not necessary, you can simply
 call with one or the other.
 */
 exports.filter = (req, res) => {
-    console.log("in filter")
-    console.log(req.body.filter)
     Event.find(req.body.filter)
       .then(data => {
-          console.log(req.body.filter)
           res.send(data);
       })
       .catch(err => {

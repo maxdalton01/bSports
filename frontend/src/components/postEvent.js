@@ -2,10 +2,18 @@ import React, {useState} from "react";
 import axios from 'axios';
 import DateTimePicker from 'react-datetime-picker';
 import "./postEvent.css";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'; // used for redirect
 import NumericInput from 'react-numeric-input';
 
 function PostEvent (props) {
+    /*
+        States to hold user input:
+            sport
+            location
+            date
+            description
+            wantedAttendees
+    */
     const [sport, setSport] = useState('soccer');
     const [location, setLocation] = useState('hitch');
     const [date, setDate] = useState(new Date());
@@ -16,9 +24,9 @@ function PostEvent (props) {
 
     
     let handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // used to check if required forms are filled out
 
-        const currentUser = sessionStorage.getItem('username');
+        const currentUser = sessionStorage.getItem('username'); // sessionStorage is where username is stored
 
         const post = {
             sport: sport,
@@ -39,10 +47,10 @@ function PostEvent (props) {
 
     return (
         <body>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}> 
                 <h3>Post a Pickup Game</h3> 
                 <label >
-                    Description (max 100 characters):
+                    Description (max 50 characters):
                     <br />
                     <textarea type="text" maxlength="50" rows="4" cols="25" onChange={(evt) => setDescription(evt.target.value)} 
                         className="textField" placeholder="Describe event here" required
