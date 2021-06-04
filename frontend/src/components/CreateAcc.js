@@ -4,11 +4,14 @@ import "./CreateAcc.css"
 import { useHistory } from 'react-router-dom';
 
 function CreateAcc (props) {
+    // states will store the username and password from input
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    // will help with redirecting after registering
     let history = useHistory();
 
+    // submits the username and password to back end like log in page
     let handleSubmit = (event) => {
         event.preventDefault();
 
@@ -23,8 +26,10 @@ function CreateAcc (props) {
                  alert("Username already taken or not a valid username")
              }
              else {
+                 // stores user ID and username
                  sessionStorage.setItem('loggedinid',res.data.userid)
                  sessionStorage.setItem('username',res.data.username)
+                 // redirects to home page after completed
                  history.push('/')
              }
          }) 

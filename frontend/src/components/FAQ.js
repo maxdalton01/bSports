@@ -4,6 +4,8 @@ import field from "./field.png";
 import axios from 'axios';
 
 class FAQ extends React.Component {
+    // states will hold user input like the question and response
+    // allQuestions holds the list of users who liked a question
     constructor(props) {
         super(props);
         this.state = {
@@ -71,6 +73,12 @@ class FAQ extends React.Component {
         {
             console.error(err);
         }
+    }
+
+    // handles clearing the question input box text
+    handleClearing = () => {
+        // find the first 'input' type and clear input
+        document.querySelector('input').value = "";
     }
 
     // updates the like count specific to the question/post's ID
@@ -198,11 +206,7 @@ class FAQ extends React.Component {
         ))
     }
 
-    // handles clearing the question input box text
-    handleClearing = () => {
-        // find the first 'input' type and clear input
-        document.querySelector('input').value = "";
-    }
+    
     
     render() {
         return (
