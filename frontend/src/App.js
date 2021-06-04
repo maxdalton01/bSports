@@ -11,8 +11,8 @@ import FAQ from "./components/FAQ";
 import Login from "./components/login";
 import Logout from "./components/Logout";
 import MyProfile from "./components/myProfile";
-////sessionStorage.setItem('loggedinid', "");			//commented out to not reset blank everytime
-////sessionStorage("username")		dict with key username and value is logged in user's name
+////sessionStorage('loggedinid')	        dict with key loggedinid and value is logged in user's id
+////sessionStorage("username")				dict with key username and value is logged in user's name
 
   function PrivRoute({ component: Component, ...rest }) {		//if there is no session id redirect back to login page
 	return (

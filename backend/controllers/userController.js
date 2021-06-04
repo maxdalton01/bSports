@@ -2,7 +2,7 @@ const account = require('../models/userModel.js');
 const passport = require('passport')
 
 
-passport.use(account.createStrategy());
+passport.use(account.createStrategy());                     //initializes the backend authentication
 
 passport.serializeUser(account.serializeUser());
 passport.deserializeUser(account.deserializeUser());
@@ -27,7 +27,7 @@ const register = (req,res) => {
         }
     });
 };
-const upVote = (req,res) => {
+const upVote = (req,res) => {           //unused rating feature function
     if(!req.body) {                              //max's coding style
         return res.status(400).send({ 
             message: "Bad request"
@@ -53,7 +53,7 @@ const upVote = (req,res) => {
     });
 };
 
-const downVote = (req,res) => {
+const downVote = (req,res) => {         //unused rating feature function
     if(!req.body) {                              //max's coding style
         return res.status(400).send({ 
             message: "Bad request"
@@ -79,7 +79,7 @@ const downVote = (req,res) => {
     });
 };
 
-const info = (req,res) => {
+const info = (req,res) => {                  //returns user info and rating(not used currently)
     if(!req.body) {                              //max's coding style
         return res.status(400).send({ 
             message: "Bad request"

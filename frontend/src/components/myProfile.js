@@ -4,7 +4,7 @@ import './myProfile.css'
 function MyProfile (props) {
     const [user, changeUserInfo] = useState(sessionStorage.getItem('loggedinid'))
     useEffect (() => {
-        axios.get('http://localhost:3001/api/user/' + sessionStorage.getItem('loggedinid')) 
+        axios.get('http://localhost:3001/api/user/' + sessionStorage.getItem('loggedinid'))     //calls route that returns name and rating
             .then(res => {
                 changeUserInfo(res.data)
             })
