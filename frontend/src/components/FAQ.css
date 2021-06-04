@@ -1,22 +1,10 @@
 .header {
-
     color: #2D68C4;
     background-color: #ffdf93;
     text-align: center;
     font-family: Courier New;
 }
 
-.questions {
-    font-family: Poppins;
-    margin-left: 200px;
-    text-align: left;
-    font-size: 25px;
-    color: #2D68C4;
-    margin-right: 200px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    list-style-type: square;
-}
 
 .submitQuestion {
     margin-right: 200px;
@@ -52,7 +40,7 @@
     margin: 25px;
     border-width: 10px;
     border-radius: 25px;
-    background-color: #F2A900;
+    background-color: white;
 }
 
 .response {
