@@ -8,7 +8,7 @@ module.exports = mongoose => {
 	        attendees: Number,
 			description: String,
 			date: Date,
-			listAttendees: [String],
+			listAttendees: [String], // mongoose syntax to store a list of strings
 			creator: String,
 			wantedAttendees: Number
 	    }

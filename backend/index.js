@@ -42,10 +42,7 @@ db.mongoose
 
 
 
-app.use('/api', home);                             // /api/ leads to our home page with routes defined in userRoutes.js
-/*app.get("/api", (req, res) => {
-    res.json({message: "Hello from server!" });
-});*/
+app.use('/api', home);  // /api/ leads to our home page with routes defined in userRoutes.js
 
 require("./routes/eventRoutes.js")(app);
 require("./routes/faqRoutes.js")(app);
@@ -54,6 +51,5 @@ require("./routes/faqRoutes.js")(app);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
-    console.log(bodyParser);
 });
 
