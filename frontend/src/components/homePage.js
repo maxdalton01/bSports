@@ -3,15 +3,8 @@ import '../Styles/homePage.css';
 import axios from 'axios';
 import date from 'date-and-time';
 
-
-/*import {Link} from 'react-router-dom';*/
-
-
 class HomePage extends React.Component {
-   /* state = {allEvents: [],
-        sportsFilter: "soccer",
-        locationFilter: "hitch"};*/
-    constructor(props) {
+    constructor(props) { //initialize everything
         super(props);
         this.state = {allEvents: [], sportFilter:null, locationFilter: null, submitterValue: "Filter"
         , submitterBackground: '#2D68C4', submitterColor: "white"};
@@ -20,8 +13,8 @@ class HomePage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleLocation = this.handleLocation.bind(this);
     }
-    getAllEvents = async() =>
-    {
+    getAllEvents = async() =>  //this function is used to remove posts whose dates have passed and is used to
+    {                           // re-render the home screen
         try {
             await axios.get(`http://localhost:3001/api/events/`)
                 .then(response => {
@@ -52,15 +45,9 @@ class HomePage extends React.Component {
 
     }
     componentDidMount() {
-       /* axios.get(`http://localhost:3001/api/events/`)
-            .then(response => {
-                const allEvents = response.data;
-                console.log(allEvents)
-                this.setState({allEvents});
-            }) */
         this.getAllEvents();
     }
-        handleRSVP = async(RSVP)=>
+        handleRSVP = async(RSVP)=>  //handles the rsvp functionality
         {
             try {
                 const eventId = RSVP.currentTarget.id;
@@ -81,18 +68,14 @@ class HomePage extends React.Component {
                     });
                 const attendeeList = oneEvent.listAttendees;
                 const url = `http://localhost:3001/api/events/` + eventId + '/' + currentUser;
-
+                //ensures that a user can only rsvp on the same post once and that they cannot rsvp if the # of wanted attendees
+                // is already hit
                 if(!attendeeList.includes(currentUser) && oneEvent.wantedAttendees >= oneEvent.attendees)
                 {
                     await axios.put(url)
                         .then(response => {
-                            console.log("worked!")
+
                         })
-                    /*await axios.get(`http://localhost:3001/api/events/`)
-                        .then(response => {
-                            const allEvents = response.data;
-                            this.setState({allEvents: allEvents});
-                        })*/
                     await this.getAllEvents();
                 }
             }
@@ -102,35 +85,35 @@ class HomePage extends React.Component {
             }
         }
 
-        handleSport(event) {
+        handleSport(event) {    /*sets the value of the sport & location for filtering*/
             this.setState({sportFilter: event.target.value});
         }
         handleLocation(event) {
         this.setState({locationFilter: event.target.value});
     }
 
-      handleSubmit = async (event) => {
+      handleSubmit = async (event) => {  /*handles the filter functionality */
         if(this.state.sportFilter == null || this.state.locationFilter == null)
         {
-            return
+            return  //if no values are selected do nothing
         }
 
         try {
             event.preventDefault();
             const filterInside = {
-                sport: this.state.sportFilter,
+                sport: this.state.sportFilter, //filter object we are sending to the backend
                 location: this.state.locationFilter
             }
             const filter = {
                 filter: filterInside
 
             };
-            console.log("success3")
             await axios.post(`http://localhost:3001/api/events/filter`, filter)
                 .then(response => {
                     const allEvents = response.data;
                     this.setState({allEvents: allEvents, sportFilter: null, locationFilter: null, submitterValue:"CLEAR FILTER ✖",
-                        submitterBackground: '#D3D3D3', submitterColor: "black"});
+                        submitterBackground: '#D3D3D3', submitterColor: "black"}); //updates the filter button to clear-filter button, filtered posts
+                                                                                    // & updates the sport and location value
                 })
         }
         catch(err)
@@ -140,7 +123,8 @@ class HomePage extends React.Component {
 
 
     }
-
+    // the form holds the filter button and options
+    //below it, the map functionality is used to create a list of posts with the desired contents
     render()
     {
         return (
@@ -186,7 +170,7 @@ class HomePage extends React.Component {
                             <ul className={"attendees"}> Attendees: {post.attendees}/{post.wantedAttendees} <ul>{'----------------'}<ul>
                             </ul><button id = {post._id} className='rsvpButton' onClick={this.handleRSVP}> RSVP</button>
                            </ul>
-                           </ul> </h1> <hr/> <h3 className={"description"}> {post.description} </h3>
+                           </ul> </h1> <hr/> <h3 className="container2"><h3 className={"description"}> {post.description} </h3></h3>
                          </ul>)}
 
                     </div>

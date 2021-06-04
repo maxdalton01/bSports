@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../Styles/toolBar.css';
 import {Link} from 'react-router-dom';
 import logo from "./uclalogo.png";
-
+//used react router to link everything
 let dropdown = <nav className={'container'}>
 <Link to='/login'>
     <a  className={'toolBarButtons'} href="">My Profile</a>
