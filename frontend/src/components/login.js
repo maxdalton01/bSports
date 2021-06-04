@@ -5,11 +5,14 @@ import { useHistory } from 'react-router-dom';
 
 
 function Login (props) {
+    // states hold the username and password
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    // This helps redirect after logging in
     let history = useHistory();
 
+    // Submits a username and password to back end in format of json object
     let handleSubmit = (event) => {
         event.preventDefault();
 
@@ -20,8 +23,10 @@ function Login (props) {
 
         axios.post('http://localhost:3001/api/login', user)
         .then(res => {
+            // we store the userID and the username to be used for frontend apps
             sessionStorage.setItem('loggedinid',res.data)
             sessionStorage.setItem('username', user.username)
+            // redirect to home after log in
             history.push('/')
         }) 
         .catch(err => {
